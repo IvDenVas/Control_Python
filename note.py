@@ -26,6 +26,26 @@ def get_id():
                 max_id = int(row[0])
     return max_id
 
+def search_by_id():
+    search_id = input("Введите ID нужной заметки: ")
+    with open('file.csv', newline="", encoding='utf-8') as file:
+        read = csv.reader(file, delimiter=";")
+        for row in read:
+            if search_id in row[0]:
+                print(row[0], " - ", row[1], " - ", row[2], ' - ', row[3])
+
+def search_by_name():
+    search_name = input("Введите Заголовок нужной заметки: ")
+    with open('file.csv', newline="", encoding='utf-8') as file:
+        read = csv.reader(file, delimiter=";")
+        for row in read:
+            if search_name in row[1]:
+                print(row[0], " - ", row[1], " - ", row[2], ' - ', row[3])
+
+
+
 # add()
-show()
+# show()
 #get_id()
+# search_by_id()
+search_by_name()
