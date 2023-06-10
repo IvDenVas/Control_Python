@@ -69,10 +69,33 @@ def edit():
     os.rename('temp2.csv', 'file.csv')
     print("Заметка успешно изменена")
 
+def menu():
+    while (True):
+        action = input("Введите необходимую команду:\n add - добавить новую заметку\n show - показать все заметки\n edit - редактировать заметку\n remove - удалить заметку\n search - поиск\n exit - выход: \n")
+        if action == "add":
+            add()
+        elif action == "show":
+            show()
+        elif action == "edit":
+            edit()
+        elif action == "remove":
+            remove()
+        elif action == "search_id":
+            search_by_id()
+        elif action == "search_name":
+            search_by_name()
+        elif action == "exit":
+            print("До свидания!")
+            break
+        else: 
+            print("Такой команды нет!")
+            continue
+
 # add()
 # show()
 #get_id()
 # search_by_id()
 # search_by_name()
 # remove()
-edit()
+# edit()
+menu()
