@@ -42,10 +42,22 @@ def search_by_name():
             if search_name in row[1]:
                 print(row[0], " - ", row[1], " - ", row[2], ' - ', row[3])
 
+def remove():
+    delete_id = input("Введите ID удаляемой заметки: ")
+    with open('file.csv', newline="", encoding='utf-8') as file:
+        with open('temp.csv', "a", newline="", encoding='utf-8') as file1:
+            writer = csv.writer(file1, delimiter=";")
+            for row in csv.reader(file, delimiter=";"):
+                if delete_id not in row[0]:
+                    writer.writerow(row)
+    os.remove('file.csv') 
+    os.rename('temp.csv', 'file.csv')
+    print("Заметка удалена.")
 
 
 # add()
 # show()
 #get_id()
 # search_by_id()
-search_by_name()
+# search_by_name()
+remove()
