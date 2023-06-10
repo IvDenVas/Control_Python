@@ -54,10 +54,25 @@ def remove():
     os.rename('temp.csv', 'file.csv')
     print("Заметка удалена.")
 
+def edit():
+    edit_id = input("Введите ID изменяемой заметки: ")
+    with open('file.csv', newline="", encoding='utf-8') as file:
+        with open('temp2.csv', "a", newline="", encoding='utf-8') as file1:
+            writer = csv.writer(file1, delimiter=";")
+            for row in csv.reader(file, delimiter=";"):
+                if edit_id not in row[0]:
+                    writer.writerow(row)
+                else:
+                    user = [edit_id, row[1], input("Внесите изменение: "), datetime.datetime.now().strftime("%Y-%m-%d")]
+                    writer.writerow(user)
+    os.remove('file.csv') 
+    os.rename('temp2.csv', 'file.csv')
+    print("Заметка успешно изменена")
 
 # add()
 # show()
 #get_id()
 # search_by_id()
 # search_by_name()
-remove()
+# remove()
+edit()
